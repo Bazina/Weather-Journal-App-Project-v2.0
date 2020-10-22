@@ -1,0 +1,275 @@
+/* This CSS was inspired by:
+* "https://youtu.be/n4dtwWgRueI"
+* "https://github.com/tem-nik/Weather-Journal-App"
+ */
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  height: 100%;
+}
+
+#bg{
+  background-image: url("img/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  padding: 8rem;
+  background-position: top center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#app {
+  align-items: stretch;
+  background: transparent;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  width: 50vw;
+}
+
+.holder{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 15px 15px;
+}
+
+.holder input {
+  color: black;
+  height: 60px;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  background-color:  rgba(255, 255, 255, 0.3);
+  border-radius: 16px 0px 16px 0px;
+  border-bottom: 4px solid goldenrod;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Roboto", "sans-serif";
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 0;
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 42px;
+  height: 30%;
+  border-radius: 0 0 2rem 2rem;
+  text-shadow: 0.3rem 0.3rem 0.2rem rgba(0, 0, 0, 0.808);
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0, 0, 0, 0.37));
+}
+#valid {
+  font-family: "Roboto", "sans-serif";
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 0 0 0;
+}
+
+#entryHolder{
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  padding: 2rem 0;
+  font-family: "montserrate",sans-serif;
+}
+
+#all__date,
+#all__temp,
+#all__content{
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  padding: 0 1rem;
+  font-family: 'montserrat', "sans-serif";
+}
+
+#date,
+#temp,
+#content {
+  padding: 0 1rem 0 1rem;
+  color: rgb(241, 182, 32);
+}
+
+#content {
+  justify-content: flex-start;
+  flex: 2;
+}
+
+.headline {
+  background-color: rgba(241, 182, 32, 1);
+  text-align: center;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 30px;
+  letter-spacing: 0.2rem;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "Roboto", "sans,serif";
+}
+
+.title{
+  color: rgb(241, 182, 32);
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  margin: 0rem 0 0rem 0;
+  text-transform: uppercase;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+
+#generate {
+  background-color: rgba(255, 217, 0, 0.849);
+  border-radius: 2rem;
+  box-shadow: 1rem 1rem 2rem rgb(0, 0, 0);
+  border: 2px solid black;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  height: 100px;
+  letter-spacing: 0.2rem;
+  margin: 10px auto 0px auto;
+  opacity: 0.9;
+  text-transform: uppercase;
+  width: 250px;
+  min-width: 100px;
+  transition: all 0.1s;
+}
+
+#generate:active {
+  transform: translateZ(0);
+}
+
+#generate:hover {
+  transform: translateY(-0.3rem);
+}
+
+#feelings {
+  background:rgba(255, 255, 255, 0.3);
+  border: none;
+  border-top: 4px solid goldenrod;
+  resize: none;
+  height: 5rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0px 16px 0px 16px;
+  text-align: left;
+  color: black;
+  font-size: 20px;
+  font-family: "Roboto", "sans-serif";
+  padding: 20px;
+}
+
+.entry__icon {
+  color: gold;
+  opacity: 0;
+  padding: 0 0 0 1rem;
+  margin: 0;
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+  color: #f0d43a; 
+  font-family: 'Oswald', sans-serif;
+
+} 
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+  color: #f0d43a; 
+  font-family: 'Oswald', sans-serif;
+
+} 
+
+::-ms-input-placeholder { /* Microsoft Edge */ 
+  color: #f0d43a; 
+  font-family: 'Oswald', sans-serif;
+
+}
+
+@media only screen and (max-width: 800px){
+  #bg{
+    height: auto;
+  }
+  
+  #app {
+    height: auto;
+  }
+  
+  .holder input {
+    font-size: 17px;
+  }
+  
+  .entry {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+    font-size: 42px;
+    border-radius: 0 0 2rem 2rem;
+  }
+  
+  #entryHolder{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    justify-content: center;
+    padding: 0 2rem;
+  }
+  
+  #date,
+  #temp,
+  #content {
+    padding: 0.5rem;
+  }
+  
+  .headline {
+    border-radius: 1.5rem 1.5rem 0 0;
+    font-size: 16px;
+  }
+  
+  .title{
+    font-size: 0.9rem;
+    margin: 0rem 0 0rem 0;
+  }
+  
+  /*  Basic Styling To Override Default For Basic HTML Elements */
+  
+  #generate {
+    font-size: 0.75rem;
+    height: 80px;
+    margin: 10px auto 0px auto;
+    width: 200px;
+    min-width: 100px;
+  }
+  
+  #feelings {
+    font-size: 17px;
+  }
+
+  .entry__icon {
+    opacity: 0;
+    padding: 0 0 0 1rem;
+    margin: 0;
+  }
+}
