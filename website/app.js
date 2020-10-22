@@ -96,15 +96,15 @@ const updateUI = async () => {
   // Get the posted data from the server
   const request = await fetch('/all');
   try {
-    const allData = await request.json();
+    const showData = await request.json();
     // Put icons before the entries
     // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
     icons.forEach(icon => icon.style.opacity = '1');
     // Update the html elements with the proper data
-    document.getElementById('date').innerHTML = allData.date;
-    document.getElementById('temp').innerHTML = `${allData.temperature}&#8451;`;
-    document.getElementById('content').innerHTML = allData.feelings;
-    console.log(allData);
+    document.getElementById('date').innerHTML = showData.date;
+    document.getElementById('temp').innerHTML = `${showData.temperature}&#8451;`;
+    document.getElementById('content').innerHTML = showData.feelings;
+    console.log(showData);
   } catch (error) {
     console.log("error", error);
   }
