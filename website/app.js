@@ -28,7 +28,7 @@ function geneData(e) {
   // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
   .then(data => {
     hide.style.visibility = "visible"
-      postData("/add", {date: newDate, temp: data.main.temp, content});
+    postData("/add", {date: newDate, temp: data.main.temp, content});
   })
   // Update UI data, newData will be available after the post
   .then(newData => {
