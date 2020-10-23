@@ -2,14 +2,18 @@
 
 ## Table of Contents
 
+- [Used-Languages](#Used-Languages)
 - [Instructions](#instructions)
 - [Operate](#operate)
 - [ES6](#es6)
 - [Structure](#structure)
 
-## Project 3 - Weather Journal App (Second Project Udacity Nanodegree)
-#### What I used: HTML, CSS, Javascript (Vanilla), ES6
+### Used-Languages
 
+- HTML
+- CSS
+- Javascript (Vanilla)
+- ES6
 
 ### Instructions
 
