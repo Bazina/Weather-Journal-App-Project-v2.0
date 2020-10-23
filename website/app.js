@@ -17,7 +17,7 @@ generate.addEventListener("click", geneData);
 
 function geneData(e) {
   // Get user inputs
-  const content = document.getElementById("feelings").value;
+  const userFeelings = document.getElementById("feelings").value;
   const zip = document.getElementById("zip").value;
   const valid = document.getElementById("valid");
   const hide = document.getElementById("entryHolder");
@@ -27,7 +27,7 @@ function geneData(e) {
   // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
   .then(data => {
     hide.style.visibility = "visible"
-    postData("/add", {date: newDate, temp: data.main.temp, content});
+    postData("/add", {date: newDate, temp: data.main.temp, content: userFeelings});
   })
   // Update UI data
   .then(() => {
