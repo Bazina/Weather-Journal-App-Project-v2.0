@@ -86,9 +86,9 @@ body{
   font-family: "montserrate",sans-serif;
 }
 
-#all__date,
-#all__temp,
-#all__content{
+#dataDate,
+#dataTemp,
+#dataContent{
   display: flex;
   justify-content: space-around;
   align-items: baseline;
