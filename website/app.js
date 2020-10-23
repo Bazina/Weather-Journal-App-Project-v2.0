@@ -107,7 +107,7 @@ const updateUI = async (url) => {
     feel.innerHTML = `${result.feelings}`;
     // Put icons before the entries
     logos.forEach(logo => {
-      logo.style.visibility = "1"
+      logo.style.visibility = "visible"
     });
     console.log(result);
   } catch (error) {
