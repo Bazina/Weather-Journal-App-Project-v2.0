@@ -100,9 +100,9 @@ const updateUI = async () => {
     // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
     icons.forEach(icon => icon.style.opacity = '1');
     // Update the html elements with the proper data
-    document.getElementById('date').innerHTML = showData.date;
-    document.getElementById('temp').innerHTML = `${showData.temperature}&#8451;`;
-    document.getElementById('content').innerHTML = showData.feelings;
+    document.getElementById('date').innerHTML = `${showData.date}`;
+    document.getElementById('temp').innerHTML = `${showData.temp}&#8451;`;
+    document.getElementById('content').innerHTML = `${showData.feelings}`;
     console.log(showData);
   } catch (error) {
     console.log("error", error);
