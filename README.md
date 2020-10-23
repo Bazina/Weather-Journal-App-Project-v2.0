@@ -1,4 +1,4 @@
-# Weather Journal App :umbrella:
+# Weather Journal App Project
 
 ## Table of Contents
 
