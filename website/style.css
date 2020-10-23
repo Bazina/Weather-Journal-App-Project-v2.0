@@ -176,7 +176,7 @@ body{
 
 .logo {
   color: gold;
-  opacity: 0;
+  visibility: hidden;
   padding: 0 0 0 1rem;
   margin: 0;
 }
