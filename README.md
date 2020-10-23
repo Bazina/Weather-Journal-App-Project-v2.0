@@ -8,14 +8,14 @@
 
 This project was about working with Web APIs and asynchronous code, creating a web app that uses OpenWeatherMap API to get weather based on user's location, and dynamically update UI.
 
-### Building
+### Structure
 To get the project up and running I followed these steps:
 
 - Installed node and packages, and included in my server.js file.
-- Added POST and GET routes to ensure correct retrieval of data from the server.
-- Acquired API credentials from OpenWeatherMap website.
+- Added POST and GET routes to oost & get data.
+- Got API credentials from OpenWeatherMap page.
 - Created async functions to fetch weather data from API and store it on my local server. 
-- Set up a function that updated UI dynamically.
+- Built a function that update UI dynamically.
 - Validate zip code.
 - UI/UX for good experience.
 

@@ -1,9 +1,14 @@
 /* Global Variables */
 const baseURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&zip=";
-const apiKey = "&appid=e96de8cd3cbefa2956325873b44a58e2";
+const apiKey = "e96de8cd3cbefa2956325873b44a58e2";
 
 /* Icons for the outputs */
-const icons = document.querySelectorAll('.entry__icon');
+const logos = document.querySelectorAll('.logo');
+
+// User entries
+const date = document.getElementById("date");
+const deg = document.getElementById("temp");
+const feel = document.getElementById("content");
 
 /* Create a new date instance dynamically with JS
 * One was added beacause getMonth return months from 0 to 11
@@ -11,46 +16,45 @@ const icons = document.querySelectorAll('.entry__icon');
 let d = new Date();
 let newDate = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
 
-// Have the button ready to generate responce on click
-const generate = document.getElementById("generate");
-generate.addEventListener("click", geneData);
+// Button to click on to run the server
+const produce = document.getElementById("generate");
+produce.addEventListener("click", geneData);
 
-function geneData(e) {
-  // Get user inputs
+function geneData() {
+  // User entries
   const userFeelings = document.getElementById("feelings").value;
   const zip = document.getElementById("zip").value;
   const valid = document.getElementById("valid");
   const hide = document.getElementById("entryHolder");
 
-  apiWeather(baseURL,zip,apiKey)
-  // Post data to server
-  // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
-  .then(data => {
-    hide.style.visibility = "visible"
-    postData("/add", {date: newDate, temp: data.main.temp, content: userFeelings});
+  apiWeather(baseURL, zip, apiKey)
+  // Post data to server and hide the shown data
+    .then(data => {
+      hide.style.visibility = "visible"
+      postData("/add", {date: newDate, temp: data.main.temp, content: userFeelings});
   })
   // Update UI data
-  .then(() => {
+    .then(() =>{
       updateUI()
-  })
+    })
   // Validate the zip code
-  .catch(() => {
-    if (zip === ""){
-      valid.innerHTML = "Enter a zip code";
-      hide.style.visibility = "hidden";
-    } else {
-      valid.innerHTML = "Please search for a US city 😩";
-      hide.style.visibility = "hidden";
-    }
-  })
-  valid.innerHTML = "";
+    .catch(() => {
+      if (zip === ""){
+        valid.innerHTML = "Enter a zip code";
+        hide.style.visibility = "hidden";
+      } else {
+        valid.innerHTML = "Please search for a US city 😩";
+        hide.style.visibility = "hidden";
+      }
+    })
+    valid.innerHTML = "";
 };
 
 // Get request data from API
 const apiWeather = async(baseURL, zip, apiKey) => {
     try { // Template literals
       const res = await fetch(
-        `${baseURL}${zip}${apiKey}`
+        `${baseURL}${zip}&appid=${apiKey}`
       );
       // Save data in res as json
       const data = res.json();
@@ -61,23 +65,12 @@ const apiWeather = async(baseURL, zip, apiKey) => {
     }
 };
 
-// Get data from server
-const getData = async(url = "") => {
-  const res = await fetch(url);
-  try {
-      const data = await res.json();
-      console.log(data);
-  } catch {
-      console.log("Error", error);
-  }
-};
-
 // Post data to server endpoint (projectData)
 const postData = async(url = "", data = {}) => {
   const res = await fetch(url, {
       method: "POST",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json"
       },
       credentials: "same-origin",
       body: JSON.stringify(data),
@@ -91,20 +84,33 @@ const postData = async(url = "", data = {}) => {
   }
 };
 
-const updateUI = async () => {
+// Get data from server
+const getData = async(url = "") => {
+  const res = await fetch(url);
+  try {
+      const data = await res.json();
+      console.log(data);
+  } catch {
+      console.log("Error", error);
+  }
+};
+
+
+const updateUI = async (url) => {
   // Get the posted data from the server
   const req = await fetch('/all');
   try {
-    const showData = await req.json();
+    const result = await req.json();
+    // Update HTML elements with the proper data
+    date.innerHTML = `${result.date}`;
+    deg.innerHTML = `${result.temperature}&#8451;`;
+    feel.innerHTML = `${result.feelings}`;
     // Put icons before the entries
-    // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
-    icons.forEach(icon => icon.style.opacity = '1');
-    // Update the html elements with the proper data
-    document.getElementById('date').innerHTML = `${showData.date}`;
-    document.getElementById('temp').innerHTML = `${showData.temp}&#8451;`;
-    document.getElementById('content').innerHTML = `${showData.feelings}`;
-    console.log(showData);
+    logos.forEach(logo => {
+      logo.style.opacity = "1"
+    });
+    console.log(result);
   } catch (error) {
-    console.log("error", error);
+    console.log("Error", error);
   }
 };

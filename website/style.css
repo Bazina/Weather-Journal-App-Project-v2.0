@@ -1,6 +1,5 @@
 /* This CSS was inspired by:
 * "https://youtu.be/n4dtwWgRueI"
-* "https://github.com/tem-nik/Weather-Journal-App"
  */
 * {
   margin: 0px;
@@ -174,7 +173,7 @@ body{
   padding: 20px;
 }
 
-.entry__icon {
+.logo {
   color: gold;
   opacity: 0;
   padding: 0 0 0 1rem;
@@ -267,7 +266,7 @@ button:focus {
     font-size: 17px;
   }
 
-  .entry__icon {
+  .logo {
     opacity: 0;
     padding: 0 0 0 1rem;
     margin: 0;
