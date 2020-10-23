@@ -16,22 +16,21 @@ const generate = document.getElementById("generate");
 generate.addEventListener("click", geneData);
 
 function geneData(e) {
-  // Prevent default action
-  e.preventDefault();
   // Get user inputs
   const content = document.getElementById("feelings").value;
   const zip = document.getElementById("zip").value;
   const valid = document.getElementById("valid");
   const hide = document.getElementById("entryHolder");
-  getWeather(baseURL,zip,apiKey)
+
+  apiWeather(baseURL,zip,apiKey)
   // Post data to server
   // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
   .then(data => {
     hide.style.visibility = "visible"
     postData("/add", {date: newDate, temp: data.main.temp, content});
   })
-  // Update UI data, newData will be available after the post
-  .then(newData => {
+  // Update UI data
+  .then(() => {
       updateUI()
   })
   // Validate the zip code
@@ -48,7 +47,7 @@ function geneData(e) {
 };
 
 // Get request data from API
-const getWeather = async(baseURL, zip, apiKey) => {
+const apiWeather = async(baseURL, zip, apiKey) => {
     try { // Template literals
       const res = await fetch(
         `${baseURL}${zip}${apiKey}`
@@ -84,9 +83,9 @@ const postData = async(url = "", data = {}) => {
       body: JSON.stringify(data),
   });
   try { // Save the data as json
-      const newData = await res.json();
-      console.log(newData);
-      return (newData);
+      const enrtyData = await res.json();
+      console.log(enrtyData);
+      return (enrtyData);
   } catch(error) {
       console.log("Error", error);
   }
@@ -94,9 +93,9 @@ const postData = async(url = "", data = {}) => {
 
 const updateUI = async () => {
   // Get the posted data from the server
-  const request = await fetch('/all');
+  const req = await fetch('/all');
   try {
-    const showData = await request.json();
+    const showData = await req.json();
     // Put icons before the entries
     // This snippet was inspired by "https://github.com/tem-nik/Weather-Journal-App"
     icons.forEach(icon => icon.style.opacity = '1');
