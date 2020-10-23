@@ -39,10 +39,10 @@ These thing are working with the latest browsers except IE 11, IE 10.
 ### Structure
 To get the project up and running I followed these steps:
 
-- Installed node and packages, and included in my server.js file.
-- Added POST and GET routes to oost & get data.
+- Installed `node` and `packages`, and included in my `server.js` file.
+- Added `POST` and `GET` routes to oost & get data.
 - Got API credentials from OpenWeatherMap page.
-- Created async functions to fetch weather data from API and store it on my local server. 
-- Built a function that update UI dynamically.
+- Created `async` functions to `fetch` weather data from `API` and store it on my local server. 
+- Built a function that update `UI` dynamically.
 - Validate zip code.
 - UI/UX for good experience.
