@@ -14,8 +14,7 @@ skycons.set("icon", 'clear-day');
 skycons.play();
 
 /* Create a new date instance dynamically with JS
-* One was added beacause getMonth return months from 0 to 11
-*/
+* One was added beacause getMonth return months from 0 to 11 */
 let d = new Date();
 let newDate = `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;
 
@@ -97,6 +96,7 @@ const updateUI = async (url) => {
     date.innerHTML = `${result.date}`;
     deg.innerHTML = `${result.temperature}&#8451;`;
     feel.innerHTML = `${result.feelings}`;
+    // Update skycon icon on the headline
     if (result.temperature < 10){
       skycons.color = "#BFCDD9";
       skycons.set("icon", 'snow');
