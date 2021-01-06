@@ -30,6 +30,7 @@ function addData(req, res) {
     projectData.feelings = req.body.content;
     res.send(projectData);
     console.log(projectData);
+    response.send(projectData).status(200).end();
 }
 
 // Callback function to complete GET '/all'
