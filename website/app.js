@@ -9,6 +9,9 @@ const logos = document.querySelectorAll('.logo');
 const date = document.getElementById("date");
 const deg = document.getElementById("temp");
 const feel = document.getElementById("content");
+let skycons = new Skycons({"color": "#F2921D"});
+skycons.set("icon", 'clear-day');
+skycons.play();
 
 /* Create a new date instance dynamically with JS
 * One was added beacause getMonth return months from 0 to 11
@@ -84,18 +87,7 @@ const postData = async(url = "", data = {}) => {
   }
 };
 
-// Get data from server
-const getData = async(url = "") => {
-  const res = await fetch(url);
-  try {
-      const data = await res.json();
-      console.log(data);
-  } catch {
-      console.log("Error", error);
-  }
-};
-
-
+// Update UI
 const updateUI = async (url) => {
   // Get the posted data from the server
   const req = await fetch('/all');
@@ -105,6 +97,23 @@ const updateUI = async (url) => {
     date.innerHTML = `${result.date}`;
     deg.innerHTML = `${result.temperature}&#8451;`;
     feel.innerHTML = `${result.feelings}`;
+    if (result.temperature < 10){
+      skycons.color = "#BFCDD9";
+      skycons.set("icon", 'snow');
+      skycons.play();
+    } else if (result.temperature < 20){
+      skycons.color = "#368ABF";
+      skycons.set("icon", 'rain');
+      skycons.play();
+    } else if (result.temperature < 25){
+      skycons.color = "#7C92A6";
+      skycons.set("icon", 'cloudy');
+      skycons.play();
+    } else {
+      skycons.color = "#7C92A6";
+      skycons.set("icon", 'clear-day');
+      skycons.play();
+    }
     // Put icons before the entries
     logos.forEach(logo => {
       logo.style.visibility = "visible"
@@ -112,5 +121,16 @@ const updateUI = async (url) => {
     console.log(result);
   } catch (error) {
     console.log("Error", error);
+  }
+};
+
+// Get data from server
+const getData = async(url = "") => {
+  const res = await fetch(url);
+  try {
+      const data = await res.json();
+      console.log(data);
+  } catch {
+      console.log("Error", error);
   }
 };
